@@ -1,0 +1,9 @@
+E:\projects\HYPay\HYModel\bin\Debug\HYModel.dll
+E:\projects\HYPay\HYModel\bin\Debug\HYModel.pdb
+E:\projects\HYPay\HYModel\obj\Debug\HYModel.dll
+E:\projects\HYPay\HYModel\obj\Debug\HYModel.pdb
+G:\我的项目\微信支付系统\代码\HYPay\HYModel\bin\Debug\HYModel.dll
+G:\我的项目\微信支付系统\代码\HYPay\HYModel\bin\Debug\HYModel.pdb
+G:\我的项目\微信支付系统\代码\HYPay\HYModel\obj\Debug\HYModel.dll
+G:\我的项目\微信支付系统\代码\HYPay\HYModel\obj\Debug\HYModel.pdb
+G:\我的项目\微信支付系统\代码\HYPay\HYModel\obj\Debug\HYModel.csprojResolveAssemblyReference.cache

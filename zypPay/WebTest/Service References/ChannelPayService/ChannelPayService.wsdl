@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s0="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" name="ChannelPayService" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="Pay">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="paytype" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="clientID" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="clientKey" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="terminalID" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="strAmmount" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="payCode" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="subject" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="shopID" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="oprID" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PayResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="PayResult" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Refund">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="paytype" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="clientID" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="clientKey" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="channelOrderNo" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="orderNo" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="strAmmount" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="terminalID" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="oprID" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="refundReason" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RefundResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="RefundResult" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="QueryOrder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="paytype" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="clientID" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="clientKey" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="channelOrderNo" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="orderNo" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="terminalID" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="oprID" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="QueryOrderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="QueryOrderResult" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CancelOrder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="paytype" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="clientID" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="clientKey" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="channelOrderNo" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="orderNo" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="terminalID" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="oprID" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CancelOrderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="CancelOrderResult" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="string" nillable="true" type="xs:string" />
+    </xs:schema>
+  </types>
+  <message name="PaySoapIn">
+    <part name="parameters" element="s0:Pay" />
+  </message>
+  <message name="PaySoapOut">
+    <part name="parameters" element="s0:PayResponse" />
+  </message>
+  <message name="RefundSoapIn">
+    <part name="parameters" element="s0:Refund" />
+  </message>
+  <message name="RefundSoapOut">
+    <part name="parameters" element="s0:RefundResponse" />
+  </message>
+  <message name="QueryOrderSoapIn">
+    <part name="parameters" element="s0:QueryOrder" />
+  </message>
+  <message name="QueryOrderSoapOut">
+    <part name="parameters" element="s0:QueryOrderResponse" />
+  </message>
+  <message name="CancelOrderSoapIn">
+    <part name="parameters" element="s0:CancelOrder" />
+  </message>
+  <message name="CancelOrderSoapOut">
+    <part name="parameters" element="s0:CancelOrderResponse" />
+  </message>
+  <message name="PayHttpGetIn">
+    <part name="paytype" type="s:string" />
+    <part name="clientID" type="s:string" />
+    <part name="clientKey" type="s:string" />
+    <part name="terminalID" type="s:string" />
+    <part name="strAmmount" type="s:string" />
+    <part name="payCode" type="s:string" />
+    <part name="subject" type="s:string" />
+    <part name="shopID" type="s:string" />
+    <part name="oprID" type="s:string" />
+  </message>
+  <message name="PayHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="RefundHttpGetIn">
+    <part name="paytype" type="s:string" />
+    <part name="clientID" type="s:string" />
+    <part name="clientKey" type="s:string" />
+    <part name="channelOrderNo" type="s:string" />
+    <part name="orderNo" type="s:string" />
+    <part name="strAmmount" type="s:string" />
+    <part name="terminalID" type="s:string" />
+    <part name="oprID" type="s:string" />
+    <part name="refundReason" type="s:string" />
+  </message>
+  <message name="RefundHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="QueryOrderHttpGetIn">
+    <part name="paytype" type="s:string" />
+    <part name="clientID" type="s:string" />
+    <part name="clientKey" type="s:string" />
+    <part name="channelOrderNo" type="s:string" />
+    <part name="orderNo" type="s:string" />
+    <part name="terminalID" type="s:string" />
+    <part name="oprID" type="s:string" />
+  </message>
+  <message name="QueryOrderHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="CancelOrderHttpGetIn">
+    <part name="paytype" type="s:string" />
+    <part name="clientID" type="s:string" />
+    <part name="clientKey" type="s:string" />
+    <part name="channelOrderNo" type="s:string" />
+    <part name="orderNo" type="s:string" />
+    <part name="terminalID" type="s:string" />
+    <part name="oprID" type="s:string" />
+  </message>
+  <message name="CancelOrderHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="PayHttpPostIn">
+    <part name="paytype" type="s:string" />
+    <part name="clientID" type="s:string" />
+    <part name="clientKey" type="s:string" />
+    <part name="terminalID" type="s:string" />
+    <part name="strAmmount" type="s:string" />
+    <part name="payCode" type="s:string" />
+    <part name="subject" type="s:string" />
+    <part name="shopID" type="s:string" />
+    <part name="oprID" type="s:string" />
+  </message>
+  <message name="PayHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="RefundHttpPostIn">
+    <part name="paytype" type="s:string" />
+    <part name="clientID" type="s:string" />
+    <part name="clientKey" type="s:string" />
+    <part name="channelOrderNo" type="s:string" />
+    <part name="orderNo" type="s:string" />
+    <part name="strAmmount" type="s:string" />
+    <part name="terminalID" type="s:string" />
+    <part name="oprID" type="s:string" />
+    <part name="refundReason" type="s:string" />
+  </message>
+  <message name="RefundHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="QueryOrderHttpPostIn">
+    <part name="paytype" type="s:string" />
+    <part name="clientID" type="s:string" />
+    <part name="clientKey" type="s:string" />
+    <part name="channelOrderNo" type="s:string" />
+    <part name="orderNo" type="s:string" />
+    <part name="terminalID" type="s:string" />
+    <part name="oprID" type="s:string" />
+  </message>
+  <message name="QueryOrderHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="CancelOrderHttpPostIn">
+    <part name="paytype" type="s:string" />
+    <part name="clientID" type="s:string" />
+    <part name="clientKey" type="s:string" />
+    <part name="channelOrderNo" type="s:string" />
+    <part name="orderNo" type="s:string" />
+    <part name="terminalID" type="s:string" />
+    <part name="oprID" type="s:string" />
+  </message>
+  <message name="CancelOrderHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="ChannelPayServiceSoap">
+    <operation name="Pay">
+      <input message="s0:PaySoapIn" />
+      <output message="s0:PaySoapOut" />
+    </operation>
+    <operation name="Refund">
+      <input message="s0:RefundSoapIn" />
+      <output message="s0:RefundSoapOut" />
+    </operation>
+    <operation name="QueryOrder">
+      <input message="s0:QueryOrderSoapIn" />
+      <output message="s0:QueryOrderSoapOut" />
+    </operation>
+    <operation name="CancelOrder">
+      <input message="s0:CancelOrderSoapIn" />
+      <output message="s0:CancelOrderSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ChannelPayServiceSoap12">
+    <operation name="Pay">
+      <input message="s0:PaySoapIn" />
+      <output message="s0:PaySoapOut" />
+    </operation>
+    <operation name="Refund">
+      <input message="s0:RefundSoapIn" />
+      <output message="s0:RefundSoapOut" />
+    </operation>
+    <operation name="QueryOrder">
+      <input message="s0:QueryOrderSoapIn" />
+      <output message="s0:QueryOrderSoapOut" />
+    </operation>
+    <operation name="CancelOrder">
+      <input message="s0:CancelOrderSoapIn" />
+      <output message="s0:CancelOrderSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ChannelPayServiceHttpGet">
+    <operation name="Pay">
+      <input message="s0:PayHttpGetIn" />
+      <output message="s0:PayHttpGetOut" />
+    </operation>
+    <operation name="Refund">
+      <input message="s0:RefundHttpGetIn" />
+      <output message="s0:RefundHttpGetOut" />
+    </operation>
+    <operation name="QueryOrder">
+      <input message="s0:QueryOrderHttpGetIn" />
+      <output message="s0:QueryOrderHttpGetOut" />
+    </operation>
+    <operation name="CancelOrder">
+      <input message="s0:CancelOrderHttpGetIn" />
+      <output message="s0:CancelOrderHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ChannelPayServiceHttpPost">
+    <operation name="Pay">
+      <input message="s0:PayHttpPostIn" />
+      <output message="s0:PayHttpPostOut" />
+    </operation>
+    <operation name="Refund">
+      <input message="s0:RefundHttpPostIn" />
+      <output message="s0:RefundHttpPostOut" />
+    </operation>
+    <operation name="QueryOrder">
+      <input message="s0:QueryOrderHttpPostIn" />
+      <output message="s0:QueryOrderHttpPostOut" />
+    </operation>
+    <operation name="CancelOrder">
+      <input message="s0:CancelOrderHttpPostIn" />
+      <output message="s0:CancelOrderHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ChannelPayServiceSoap" type="s0:ChannelPayServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Pay">
+      <soap:operation soapAction="http://tempuri.org/Pay" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Refund">
+      <soap:operation soapAction="http://tempuri.org/Refund" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="QueryOrder">
+      <soap:operation soapAction="http://tempuri.org/QueryOrder" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CancelOrder">
+      <soap:operation soapAction="http://tempuri.org/CancelOrder" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ChannelPayServiceSoap12" type="s0:ChannelPayServiceSoap12">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Pay">
+      <soap12:operation soapAction="http://tempuri.org/Pay" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Refund">
+      <soap12:operation soapAction="http://tempuri.org/Refund" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="QueryOrder">
+      <soap12:operation soapAction="http://tempuri.org/QueryOrder" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CancelOrder">
+      <soap12:operation soapAction="http://tempuri.org/CancelOrder" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ChannelPayServiceHttpGet" type="s0:ChannelPayServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="Pay">
+      <http:operation location="/Pay" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Refund">
+      <http:operation location="/Refund" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="QueryOrder">
+      <http:operation location="/QueryOrder" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CancelOrder">
+      <http:operation location="/CancelOrder" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ChannelPayServiceHttpPost" type="s0:ChannelPayServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="Pay">
+      <http:operation location="/Pay" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Refund">
+      <http:operation location="/Refund" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="QueryOrder">
+      <http:operation location="/QueryOrder" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CancelOrder">
+      <http:operation location="/CancelOrder" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ChannelPayService">
+    <port name="ChannelPayServiceSoap" binding="s0:ChannelPayServiceSoap">
+      <soap:address location="http://121.199.6.17/easypay/ChannelPayService.asmx" />
+    </port>
+    <port name="ChannelPayServiceSoap12" binding="s0:ChannelPayServiceSoap12">
+      <soap12:address location="http://121.199.6.17/easypay/ChannelPayService.asmx" />
+    </port>
+    <port name="ChannelPayServiceHttpGet" binding="s0:ChannelPayServiceHttpGet">
+      <http:address location="http://121.199.6.17/easypay/ChannelPayService.asmx" />
+    </port>
+    <port name="ChannelPayServiceHttpPost" binding="s0:ChannelPayServiceHttpPost">
+      <http:address location="http://121.199.6.17/easypay/ChannelPayService.asmx" />
+    </port>
+  </service>
+</definitions>

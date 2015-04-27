@@ -1,0 +1,16 @@
+E:\projects\HYPay\HYCashierDAL\bin\Debug\HYCashierDAL.dll
+E:\projects\HYPay\HYCashierDAL\bin\Debug\HYCashierDAL.pdb
+E:\projects\HYPay\HYCashierDAL\bin\Debug\HYModel.dll
+E:\projects\HYPay\HYCashierDAL\bin\Debug\MySql.Data.dll
+E:\projects\HYPay\HYCashierDAL\bin\Debug\HYModel.pdb
+E:\projects\HYPay\HYCashierDAL\obj\Debug\HYCashierDAL.csprojResolveAssemblyReference.cache
+E:\projects\HYPay\HYCashierDAL\obj\Debug\HYCashierDAL.dll
+E:\projects\HYPay\HYCashierDAL\obj\Debug\HYCashierDAL.pdb
+G:\我的项目\微信支付系统\代码\HYPay\HYCashierDAL\obj\Debug\HYCashierDAL.csprojResolveAssemblyReference.cache
+G:\我的项目\微信支付系统\代码\HYPay\HYCashierDAL\bin\Debug\HYCashierDAL.dll
+G:\我的项目\微信支付系统\代码\HYPay\HYCashierDAL\bin\Debug\HYCashierDAL.pdb
+G:\我的项目\微信支付系统\代码\HYPay\HYCashierDAL\bin\Debug\HYModel.dll
+G:\我的项目\微信支付系统\代码\HYPay\HYCashierDAL\bin\Debug\MySql.Data.dll
+G:\我的项目\微信支付系统\代码\HYPay\HYCashierDAL\bin\Debug\HYModel.pdb
+G:\我的项目\微信支付系统\代码\HYPay\HYCashierDAL\obj\Debug\HYCashierDAL.dll
+G:\我的项目\微信支付系统\代码\HYPay\HYCashierDAL\obj\Debug\HYCashierDAL.pdb

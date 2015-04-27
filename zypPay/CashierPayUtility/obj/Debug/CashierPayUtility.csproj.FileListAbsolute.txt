@@ -1,0 +1,4 @@
+G:\我的项目\微信支付系统\代码\HYPay\CashierPayUtility\bin\Debug\CashierPayUtility.dll
+G:\我的项目\微信支付系统\代码\HYPay\CashierPayUtility\bin\Debug\CashierPayUtility.pdb
+G:\我的项目\微信支付系统\代码\HYPay\CashierPayUtility\obj\Debug\CashierPayUtility.dll
+G:\我的项目\微信支付系统\代码\HYPay\CashierPayUtility\obj\Debug\CashierPayUtility.pdb

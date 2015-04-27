@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="F:\work\alipay\heyan\WebSite" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="配置文件1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="Web.config" publishTime="03/08/2015 19:08:42" />
+    <file relUrl="Site.Master" publishTime="03/08/2015 12:56:20" />
+    <file relUrl="bin/WebTest.pdb" publishTime="03/08/2015 19:08:41" />
+    <file relUrl="Account/Register.aspx" publishTime="03/08/2015 12:56:20" />
+    <file relUrl="Account/Web.config" publishTime="03/08/2015 12:56:20" />
+    <file relUrl="Account/Login.aspx" publishTime="03/08/2015 12:56:20" />
+    <file relUrl="Styles/Site.css" publishTime="03/08/2015 12:56:20" />
+    <file relUrl="Scripts/jquery-1.4.1.js" publishTime="03/08/2015 12:56:20" />
+    <file relUrl="Account/ChangePassword.aspx" publishTime="03/08/2015 12:56:20" />
+    <file relUrl="Global.asax" publishTime="03/08/2015 12:56:20" />
+    <file relUrl="bin/WebTest.dll" publishTime="03/08/2015 19:08:42" />
+    <file relUrl="Scripts/jquery-1.4.1-vsdoc.js" publishTime="03/08/2015 12:56:20" />
+    <file relUrl="About.aspx" publishTime="03/08/2015 12:56:20" />
+    <file relUrl="Account/ChangePasswordSuccess.aspx" publishTime="03/08/2015 12:56:20" />
+    <file relUrl="Default.aspx" publishTime="03/08/2015 12:56:20" />
+    <file relUrl="Scripts/jquery-1.4.1.min.js" publishTime="03/08/2015 12:56:20" />
+  </publishProfile>
+</publishData>
