@@ -10,7 +10,7 @@ namespace WeixinPay
 {
     public class Util
     {
-
+        #region  wwb 自定义函数
         /// <summary>
         /// 创建交易的开始或过期时间
         /// </summary>
@@ -25,6 +25,9 @@ namespace WeixinPay
         {
             return curTime.ToString("yyyyMMdd");
         }
+        #endregion
+
+        #region 阿里支付原生的方法体
         /// <summary>
         /// Sha1
         /// </summary>
@@ -279,5 +282,6 @@ namespace WeixinPay
 
             }
         }
+        #endregion
     }
 }

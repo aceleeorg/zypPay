@@ -33,6 +33,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\HYUtility\dlls\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
@@ -42,7 +45,17 @@
     <Compile Include="PayResultHelper.cs" />
     <Compile Include="PayUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WeiXin\PayResult.cs" />
+    <Compile Include="WeiXin\WeiXinPayAction.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HYCashierDAL\HYCashierDAL.csproj">
+      <Project>{28EA109D-66CC-4EE0-86AE-DC7C7834DFD8}</Project>
+      <Name>HYCashierDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WeixinPay\WeixinPay.csproj">
+      <Project>{9EBE8B6F-C1B8-4FF6-B659-5D0FFE022BD2}</Project>
+      <Name>WeixinPay</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

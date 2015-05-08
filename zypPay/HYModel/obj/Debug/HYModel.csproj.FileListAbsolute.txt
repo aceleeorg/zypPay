@@ -7,3 +7,7 @@ G:\我的项目\微信支付系统\代码\HYPay\HYModel\bin\Debug\HYModel.pdb
 G:\我的项目\微信支付系统\代码\HYPay\HYModel\obj\Debug\HYModel.dll
 G:\我的项目\微信支付系统\代码\HYPay\HYModel\obj\Debug\HYModel.pdb
 G:\我的项目\微信支付系统\代码\HYPay\HYModel\obj\Debug\HYModel.csprojResolveAssemblyReference.cache
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\HYModel\bin\Debug\HYModel.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\HYModel\bin\Debug\HYModel.pdb
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\HYModel\obj\Debug\HYModel.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\HYModel\obj\Debug\HYModel.pdb

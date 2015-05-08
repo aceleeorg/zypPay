@@ -8,7 +8,7 @@ namespace CashierPayHelper
     /// <summary>
     /// 支付结果
     /// </summary>
-    public class PayResult:TradeInfo
+    public class WeiXinPayResult:TradeInfo
     {
         
     }
@@ -29,6 +29,28 @@ namespace CashierPayHelper
         /// 交易状态描述
         /// </summary>
         public string trade_state_desc { get; set; }
+
+        /// <summary>
+        /// 代金券或立减优惠使用数量
+        /// </summary>
+        public string coupon_count { get; set; }
+
+        /// <summary>
+        /// 代金券或立减优惠使用数量
+       /// 代金券或立减优惠批次ID  coupon_batch_id_$n
+        /// </summary>
+        public string coupon_batch_id_ { get; set; }
+
+        /// <summary>
+        /// ///代金券或立减优惠批次ID ,$n为下标，从1开始编号
+       /// 代金券或立减优惠ID  coupon_id_$n
+        /// </summary>
+        public string coupon_id_ { get; set; }
+        /// <summary>
+        /// 代金券或立减优惠ID, $n为下标，从1开始编号
+        ///单个代金券或立减优惠支付金额  coupon_fee_$n
+        /// </summary>
+        public string coupon_fee_ { get; set; }
     }
     /// <summary>
     /// 取消订单
@@ -62,22 +84,14 @@ namespace CashierPayHelper
         /// 退款金额  退款总金额,单位为分,可以做部分退款
         /// </summary>
          public string refund_fee{ get; set; }
-        /// <summary>
-        /// 订单总金额
-        /// </summary> 
-        public string total_fee{ get; set; }
-       /// <summary>
-       /// 订单金额货币种类
-       /// </summary>
-       public string fee_type{ get; set; }
-      /// <summary>
-      /// 现金支付金额
-      /// </summary>
-       public string cash_fee{ get; set; }
+       
       /// <summary>
       /// 现金退款金额
       /// </summary>
        public string cash_refund_fee{get;set;}
+
+       public string coupon_refund_fee { get; set; }
+       public string coupon_refund_count { get; set; }
 
     }
     /// <summary>
@@ -112,7 +126,32 @@ namespace CashierPayHelper
         /// </summary>
         public string bill_type { get; set; }
     }
-    public class TradeInfo
+    public class BaseErrorInfo
+    {
+        /// <summary>
+        /// 返回状态码  SUCCESS/FAIL 此字段是通信标识，非交易标识，交易是否成功需要查看result_code来判断
+        /// 自定义代码 
+        /// "8001";-"支付类型错误或暂不支持指定的支付类型";
+        /// "8002";-"商户信息不匹配，请校验clientID和clientKey";
+        /// "8003";-"金额不正确";
+        /// "8004";-"商户编号未填写";
+        /// "8005";-"商户key未填写";
+        /// "8006";-"用户渠道编号未填写";
+        /// "8007";-"渠道key未填写";
+        /// "8008";-"终端编号未填写";
+        /// "8009";-"支付金额未填写";
+        /// "8010";-"支付条码号未填写";
+        /// "8011";-"卖家账号未填写";
+        /// "8012";-"商品名称未填写";
+        /// "8013";-"支付类型未填写"; 
+        /// </summary>
+        public string return_code { get; set; }
+        /// <summary>
+        /// 返回信息  返回信息，如非空，为错误原因 签名失败 参数格式校验错误
+        /// </summary>
+        public string return_msg { get; set; }
+    }
+    public class TradeInfo : BaseErrorInfo
     {
         /// <summary>
         /// 公众账号ID  调用接口提交的公众账号ID
@@ -182,14 +221,7 @@ namespace CashierPayHelper
         /// 交易描述信息
         /// </summary>
         public string desc { get; set; }
-        /// <summary>
-        /// 返回状态码  SUCCESS/FAIL 此字段是通信标识，非交易标识，交易是否成功需要查看result_code来判断
-        /// </summary>
-        public string return_code { get; set; }
-        /// <summary>
-        /// 返回信息  返回信息，如非空，为错误原因 签名失败 参数格式校验错误
-        /// </summary>
-        public string return_msg { get; set; }
+      
         /// <summary>
         /// 随机字符串  微信返回的随机字符串
         /// </summary>
@@ -208,6 +240,26 @@ namespace CashierPayHelper
         /// 错误代码描述
         /// </summary>
         public string err_code_des { get; set; }	///	否	String(128)	系统错误	错误返回的信息描述
+        /// <summary>
+        /// 交易类型
+        /// </summary>
+        public string is_subscribe { get; set; }
+        /// <summary>
+        /// 付款银行
+        /// </summary>
+        public string bank_type { get; set; }
+        /// <summary>
+        /// 现金支付货币类型
+        /// </summary>
+        public string cash_fee_type { get; set; }
+        /// <summary>
+        /// 现金支付金额
+        /// </summary>
+        public string cash_fee { get; set; }
+        /// <summary>
+        /// 代金券或立减优惠金额
+        /// </summary>
+        public string coupon_fee { get; set; }
 
     }
  

@@ -105,7 +105,8 @@ namespace WeixinPay
             var client = new HttpClient();
             var result = client.PostAsync(url, new StringContent(postdata)).Result;
             if (!result.IsSuccessStatusCode) return string.Empty;
-            return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
+           // return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
+            return new DynamicXml(result.Content.ReadAsStringAsync().Result);
         }
 
 
@@ -184,27 +185,99 @@ namespace WeixinPay
             var sign = Sign(stringADict, partnerKey);//生成签名字符串
             var postdata = PayUtil.GeneralPostdata(stringADict, sign);
             var url = "https://api.mch.weixin.qq.com/secapi/pay/refund";
-            var client = new HttpClient();
-            string cert = @"F:\work\wxcer\apiclient_cert.p12"; string password = "1238213702"; 
-            ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(CheckValidationResult);
-           // X509Certificate cer = new X509Certificate(cert, password);
-
-           // HttpWebRequest webrequest = (HttpWebRequest)HttpWebRequest.Create(url);
-           // webrequest.ClientCertificates.Add(cer);
-           //// webrequest .
-
-           // webrequest.Method = "post";
-           // HttpWebResponse webreponse = (HttpWebResponse)webrequest.GetResponse();
-           // Stream stream = webreponse.GetResponseStream(); 
-
-            // X509Certificate cer = new X509Certificate(cert, password);//线下发布需要添加的 修改成这样的才可以
-            X509Certificate2 cer = new X509Certificate2(cert, password, X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.MachineKeySet);//线上发布需要添加
-        
-
+            var client = new HttpClient();  
             var result = client.PostAsync(url, new StringContent(postdata)).Result;
             if (!result.IsSuccessStatusCode) return string.Empty;
             return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
         }
+        /// <summary>
+        /// 公共API => 申请退款
+        /// 需要双向证书
+        /// http://pay.weixin.qq.com/wiki/doc/api/index.php?chapter=9_4
+        ///应用场景 
+        ///当交易发生之后一段时间内，由于买家或者卖家的原因需要退款时，卖家可以通过退款接口将支付款退还给买家，微信支付将在收到退款请求并且验证成功之后，按照退款规则将支付款按原路退到买家帐号上。 
+        ///注意： 
+        ///1.交易时间超过半年的订单无法提交退款； 
+        ///2.微信支付退款支持单笔交易分多次退款，多次退款需要提交原支付订单的商户订单号和设置不同的退款单号。一笔退款失败后重新提交，要采用原来的退款单号。总退款金额不能超过用户实际支付金额。 
+        ///3.接口提交成功后，还需要在微信商户后台由商户管理员审核退款
+        /// </summary>
+        /// <param name="appid">(必填) String(32) 微信分配的公众账号ID</param>
+        /// <param name="mch_id">(必填) String(32) 微信支付分配的商户号</param>
+        /// <param name="device_info"> String(32) 微信支付分配的终端设备号，商户自定义</param>
+        /// <param name="nonce_str">(必填) 随机字符串 随机字符串，不长于32位。</param>
+        /// <param name="transaction_id">String(32) 微信订单号 微信的订单号，优先使用 </param>
+        /// <param name="out_trade_no">(transaction_id为空时必填) String(32) 商户订单号 transaction_id、out_trade_no二选一，如果同时存在优先级：transaction_id> out_trade_no </param>
+        /// <param name="out_refund_no">(必填) String(32) 商户退款单号 商户系统内部的退款单号，商户系统内部唯一，同一退款单号多次请求只退一笔 </param>
+        /// <param name="total_fee">(必填) int 总金额 订单总金额，单位为分，只能为整数。 </param>
+        /// <param name="refund_fee">(必填) int  退款金额 退款总金额，订单总金额，单位为分，只能为整数</param>
+        /// <param name="refund_fee_type">String(8) 货币种类 符合ISO 4217标准的三位字母代码，默认人民币：CNY</param>
+        /// <param name="op_user_id">(必填) String(32) 操作员 操作员帐号, 默认为商户号mch_id </param>
+        /// <param name="partnerKey">API密钥</param>
+        /// <returns> 参见：http://pay.weixin.qq.com/wiki/doc/api/index.php?chapter=9_4 </returns>
+        public static dynamic Refund2(string appid, string mch_id, string device_info, string nonce_str,
+                                     string transaction_id, string out_trade_no, string out_refund_no,
+                                     int total_fee, int refund_fee, string refund_fee_type, string op_user_id,
+                                     string partnerKey, string PATH_TO_CERTIFICATE)
+        {
+            var client = new HttpClient();
+           
+            try
+            {
+                var stringADict = new Dictionary<string, string>();
+                stringADict.Add("appid", appid);
+                stringADict.Add("mch_id", mch_id);
+                stringADict.Add("device_info", device_info);
+                stringADict.Add("nonce_str", nonce_str);
+                stringADict.Add("transaction_id", transaction_id);
+                stringADict.Add("out_trade_no", out_trade_no);
+                stringADict.Add("out_refund_no", out_refund_no);
+                stringADict.Add("total_fee", total_fee.ToString());
+                stringADict.Add("refund_fee", refund_fee.ToString());
+                stringADict.Add("refund_fee_type", refund_fee_type);
+                stringADict.Add("op_user_id", op_user_id);
+
+                var sign = Sign(stringADict, partnerKey);//生成签名字符串
+                var postdata = PayUtil.GeneralPostdata(stringADict, sign);           
+                var url = "https://api.mch.weixin.qq.com/secapi/pay/refund";              
+                string PASSWORD = mch_id;
+                X509Certificate2 certificate = new X509Certificate2(PATH_TO_CERTIFICATE, PASSWORD, X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.MachineKeySet);
+
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
+                ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(CheckValidationResult);//验证服务器证书回调自动验证 
+
+
+                HttpWebRequest webrequest = (HttpWebRequest)HttpWebRequest.Create(url);//前面加上如下一行代码：  
+                webrequest.ClientCertificates.Add(certificate);
+                webrequest.Method = "post";
+                webrequest.ContentType = "text/xml";
+                byte[] bytes = Encoding.UTF8.GetBytes(postdata);
+                Stream writer = webrequest.GetRequestStream();
+                writer.Write(bytes, 0, bytes.Length);
+                writer.Flush();
+                writer.Close();
+                HttpWebResponse webreponse = (HttpWebResponse)webrequest.GetResponse();
+                Stream stream = webreponse.GetResponseStream();
+
+                string resp = string.Empty;
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    resp = reader.ReadToEnd();
+                }              
+                return new DynamicXml(resp);
+
+            }
+            catch (HttpRequestException ee)
+            {
+                string temp = ee.ToString();
+
+                return null;
+            }
+            finally
+            {
+                client.Dispose();
+            }
+        }
+
 
         /*CheckValidationResult的定义*/
         private static bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
@@ -251,7 +324,8 @@ namespace WeixinPay
             var client = new HttpClient();
             var result = client.PostAsync(url, new StringContent(postdata)).Result;
             if (!result.IsSuccessStatusCode) return string.Empty;
-            return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
+            //return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
+            return new DynamicXml(result.Content.ReadAsStringAsync().Result);
         }
 
 
@@ -294,7 +368,8 @@ namespace WeixinPay
             var client = new HttpClient();
             var result = client.PostAsync(url, new StringContent(postdata)).Result;
             if (!result.IsSuccessStatusCode) return string.Empty;
-            return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
+         //   return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
+            return new DynamicXml(result.Content.ReadAsStringAsync().Result);
         }
 
 

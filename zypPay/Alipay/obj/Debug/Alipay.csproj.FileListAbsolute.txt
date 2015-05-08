@@ -7,3 +7,8 @@ G:\我的项目\微信支付系统\代码\HYPay\Alipay\bin\Debug\Alipay.pdb
 G:\我的项目\微信支付系统\代码\HYPay\Alipay\obj\Debug\Alipay.dll
 G:\我的项目\微信支付系统\代码\HYPay\Alipay\obj\Debug\Alipay.pdb
 G:\我的项目\微信支付系统\代码\HYPay\Alipay\obj\Debug\Alipay.csprojResolveAssemblyReference.cache
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\Alipay\bin\Debug\Alipay.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\Alipay\bin\Debug\Alipay.pdb
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\Alipay\bin\Debug\MySql.Data.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\Alipay\obj\Debug\Alipay.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\Alipay\obj\Debug\Alipay.pdb

@@ -8,3 +8,7 @@ G:\我的项目\微信支付系统\代码\HYPay\WebTest\bin\WebTest.pdb
 G:\我的项目\微信支付系统\代码\HYPay\WebTest\obj\Debug\WebTest.dll
 G:\我的项目\微信支付系统\代码\HYPay\WebTest\obj\Debug\WebTest.pdb
 G:\我的项目\微信支付系统\代码\HYPay\WebTest\obj\Debug\WebTest.csprojResolveAssemblyReference.cache
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\WebTest\bin\WebTest.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\WebTest\bin\WebTest.pdb
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\WebTest\obj\Debug\WebTest.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\WebTest\obj\Debug\WebTest.pdb

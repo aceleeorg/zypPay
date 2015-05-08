@@ -919,6 +919,9 @@ on t1.ClientID=t2.ClientID where  t1.status<>1 ";
        {
            bool flag = false;
 
+
+           return true;
+
            string sql = "insert into ServiceLog(FlowNo,RequestParas,ClientID,IP,RequestTime,OprID) values(";
            sql += "?FlowNo,?RequestParas,?ClientID,?IP,?RequestTime,?OprID)";
            List<MySqlParameter> paras = new List<MySqlParameter>();
@@ -977,6 +980,9 @@ on t1.ClientID=t2.ClientID where  t1.status<>1 ";
        public bool UpdateServiceLog(string flowNo, DateTime channelRequestTime, DateTime channelReponseTime, DateTime responseTime, string channelResponse, string responseParas)
        {
            bool flag = false;
+
+
+           return true;
            //string sql = "update ServiceLog set channelResponse='" + channelResponse + "',responseParas='" + responseParas+"',";
            //sql += "channelRequestTime=" + channelRequestTime + ",channelReponseTime=" + channelReponseTime+",";
            //sql += "responseTime=" + responseTime;

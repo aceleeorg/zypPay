@@ -26,3 +26,17 @@ G:\我的项目\微信支付系统\代码\HYPay\CashierMgr\bin\HYCashierDAL.pdb
 G:\我的项目\微信支付系统\代码\HYPay\CashierMgr\bin\HYModel.pdb
 G:\我的项目\微信支付系统\代码\HYPay\CashierMgr\obj\Debug\CashierMgr.dll
 G:\我的项目\微信支付系统\代码\HYPay\CashierMgr\obj\Debug\CashierMgr.pdb
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\CashierMgr\bin\CashierMgr.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\CashierMgr\bin\CashierMgr.pdb
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\CashierMgr\bin\Alipay.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\CashierMgr\bin\AspNetPager.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\CashierMgr\bin\HYCashierDAL.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\CashierMgr\bin\HYModel.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\CashierMgr\bin\Newtonsoft.Json.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\CashierMgr\bin\MySql.Data.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\CashierMgr\bin\Alipay.pdb
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\CashierMgr\bin\HYCashierDAL.pdb
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\CashierMgr\bin\HYModel.pdb
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\CashierMgr\obj\Debug\CashierMgr.csprojResolveAssemblyReference.cache
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\CashierMgr\obj\Debug\CashierMgr.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\CashierMgr\obj\Debug\CashierMgr.pdb

@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
+using System.Net;
+using System.Net.Security;
+using System.IO;
 
 namespace WeixinPay
 {
@@ -92,6 +96,77 @@ namespace WeixinPay
             var result = client.PostAsync(url, new StringContent(postdata)).Result;
             if (!result.IsSuccessStatusCode) return string.Empty;
             return new DynamicXml(result.Content.ReadAsStringAsync().Result);
+        }
+
+
+        /// <summary>
+        /// 撤销支付API
+        /// http://pay.weixin.qq.com/wiki/doc/api/index.php?chapter=5_6
+        /// 应用场景:支付交易返回失败或支付系统超时，调用该接口撤销交易。如果此订单用户支付失败，微信支付系统会将此订单关闭；如果用户支付成功，微信支付系统会将此订单资金退还给用户。
+        /// 注意：7天以内的交易单可调用撤销，其他正常支付的单如需实现相同功能请调用申请退款API。提交支付交易后调用【查询订单API】，没有明确的支付结果再调用【撤销订单API】。
+        /// 请求需要双向证书
+        /// </summary>
+        /// <param name="appid">(必填) String(32) 微信分配的公众账号ID</param>
+        /// <param name="mch_id">(必填) String(32) 微信支付分配的商户号</param>
+        /// <param name="transaction_id"> String(32) 微信订单号 优先使用</param>
+        /// <param name="out_trade_no">String(32) 商户订单号 </param>
+        /// <param name="nonce_str">(必填) String(32) 随机字符串,不长于32位</param>
+        /// <param name="partnerKey">API密钥</param>
+        /// <returns></returns>
+        public static dynamic ReverseSubmit2(string appid, string mch_id, string transaction_id,
+                                  string out_trade_no, string nonce_str,
+                                  string partnerKey, string PATH_TO_CERTIFICATE)
+        {
+            var stringADict = new Dictionary<string, string>();
+            stringADict.Add("appid", appid);
+            stringADict.Add("mch_id", mch_id);
+            stringADict.Add("transaction_id", transaction_id);
+            stringADict.Add("out_trade_no", out_trade_no);
+            stringADict.Add("nonce_str", nonce_str);
+            var sign = WxPayAPI.Sign(stringADict, partnerKey);//生成签名字符串
+            var postdata = PayUtil.GeneralPostdata(stringADict, sign);
+            var url = "https://api.mch.weixin.qq.com/secapi/pay/reverse";
+
+
+            string PASSWORD = mch_id;
+            X509Certificate2 certificate = new X509Certificate2(PATH_TO_CERTIFICATE, PASSWORD, X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.MachineKeySet);
+
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
+            ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(CheckValidationResult);//验证服务器证书回调自动验证 
+
+
+            HttpWebRequest webrequest = (HttpWebRequest)HttpWebRequest.Create(url);//前面加上如下一行代码：  
+            webrequest.ClientCertificates.Add(certificate);
+            webrequest.Method = "post";
+            webrequest.ContentType = "text/xml";
+            byte[] bytes = Encoding.UTF8.GetBytes(postdata);
+            Stream writer = webrequest.GetRequestStream();
+            writer.Write(bytes, 0, bytes.Length);
+            writer.Flush();
+            writer.Close();
+            HttpWebResponse webreponse = (HttpWebResponse)webrequest.GetResponse();
+            Stream stream = webreponse.GetResponseStream();
+
+            string resp = string.Empty;
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                resp = reader.ReadToEnd();
+            }
+            return new DynamicXml(resp);
+          
+            //var client = new HttpClient();
+            //var result = client.PostAsync(url, new StringContent(postdata)).Result;
+            //if (!result.IsSuccessStatusCode) return string.Empty;
+            //return new DynamicXml(result.Content.ReadAsStringAsync().Result);
+        }
+
+
+        /*CheckValidationResult的定义*/
+        private static bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
+        {
+            if (errors == SslPolicyErrors.None)
+                return true;
+            return false;
         }
     }
 }

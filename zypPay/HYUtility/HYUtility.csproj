@@ -78,6 +78,8 @@
   <ItemGroup>
     <Content Include="dlls\ICSharpCode.SharpZipLib.dll" />
     <Content Include="dlls\log4net.dll" />
+    <Content Include="dlls\MySql.Data.dll" />
+    <Content Include="dlls\Newtonsoft.Json.dll" />
     <Content Include="dlls\NPOI.dll" />
     <Content Include="dlls\NPOI.OOXML.dll" />
     <Content Include="dlls\NPOI.OpenXml4Net.dll" />

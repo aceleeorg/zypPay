@@ -21,3 +21,14 @@ G:\我的项目\微信支付系统\代码\HYPay\HYUtility\bin\Debug\NPOI.OpenXml
 G:\我的项目\微信支付系统\代码\HYPay\HYUtility\obj\Debug\HYUtility.csprojResolveAssemblyReference.cache
 G:\我的项目\微信支付系统\代码\HYPay\HYUtility\obj\Debug\HYUtility.dll
 G:\我的项目\微信支付系统\代码\HYPay\HYUtility\obj\Debug\HYUtility.pdb
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\HYUtility\bin\Debug\HYUtility.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\HYUtility\bin\Debug\HYUtility.pdb
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\HYUtility\bin\Debug\ICSharpCode.SharpZipLib.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\HYUtility\bin\Debug\log4net.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\HYUtility\bin\Debug\NPOI.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\HYUtility\bin\Debug\NPOI.OOXML.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\HYUtility\bin\Debug\System.Data.SQLite.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\HYUtility\bin\Debug\NPOI.OpenXmlFormats.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\HYUtility\bin\Debug\NPOI.OpenXml4Net.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\HYUtility\obj\Debug\HYUtility.dll
+G:\我的项目\微信支付系统\代码\workPay\trunk\zypPay\HYUtility\obj\Debug\HYUtility.pdb
